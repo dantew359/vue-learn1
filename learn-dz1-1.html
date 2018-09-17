@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        body{
+            background: #0f0e0e;
+/*            background: url(https://cdnb.artstation.com/p/assets/images/images/000/705/539/large/jan-ditlev-ancients-web.jpg?1443927416);*/
+            background: #000;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        h2{
+            color: #fff;
+            padding: 8px 0;
+        }
+        .user-table{
+            width: 960px;
+            margin: auto;
+        }
+        .user-block{
+            list-style-type: none;
+            padding: 20px 5px 5px;
+            transition: .3s;
+            background: #0d0d0d;
+            
+        }
+        .user-block img{
+            max-width: 60px;
+            margin-right: 20px;
+        }
+        .user-block li{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 20px;
+            font-size: 20px;
+            color: #fff;
+            min-width: 200px;
+        }
+        
+        .user-block:nth-child(2n-1){
+            background: #1d1c1c;
+        }
+        .user-block:hover{
+            background: #3c3c3c;
+        }
+        .footer{
+            width: 960px;
+            margin: auto;
+            position: relative;
+        }
+        .footer button{
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            padding: 5px 10px;
+            background: #1d1c1c;
+            color: #fff;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="user-table" v-if="seen">
+            <h2>Всего пользователей: {{ allUsers() }} </h2>
+<!--            <h2>Всего пользователей: {{ aUs.user1 }} </h2>-->
+           
+<!--            <ul class="user-block">
+                <li><img v-for="ava in aUs.user1"  v-bind:src="ava.avatar"></li>
+                <li v-for="user in aUs.user1">
+                   {{ user.text }}
+                </li>
+            </ul>
+            <ul class="user-block">
+                <li><img v-for="ava in aUs.user2"  v-bind:src="ava.avatar"></li>
+                <li v-for="user in aUs.user2">
+                   {{ user.text }}
+                </li>
+            </ul>
+            <ul class="user-block">
+                <li><img v-for="ava in aUs.user3"  v-bind:src="ava.avatar"></li>
+                <li v-for="user in aUs.user3">
+                   {{ user.text }}
+                </li>
+            </ul>
+            <ul class="user-block">
+                <li><img v-for="ava in aUs.user4"  v-bind:src="ava.avatar"></li>
+                <li v-for="user in aUs.user4">
+                   {{ user.text }}
+                </li>
+            </ul>
+            <ul class="user-block">
+                <li><img v-for="ava in aUs.user5"  v-bind:src="ava.avatar"></li>
+                <li v-for="user in aUs.user5">
+                   {{ user.text }}
+                </li>
+            </ul>-->
+            
+                <ul class="user-block" v-for="(item, index) in aUs">
+                    <li><img v-if="item[3].avatar" v-bind:src="item[3].avatar"></li>
+<!--                    <li><img v-else v-bind:src="item[0].text"></li>-->
+                    <li> {{item[0].text}} </li>
+                    <li> {{item[1].text}} </li>
+                    <li> {{item[2].text}} </li>
+                </ul>
+            
+            
+        </div>
+        <div class="footer">
+            <button v-on:click="hiddenTable">Скрыть список</button>
+        </div>
+        
+
+    </div>
+    <script>
+        
+        var app = new Vue({
+            el: '#app',
+            data: {
+                seen: true,
+                aUs: {
+                    user1: [
+                        { text: 'Асгардский' },
+                        { text: 'Хеймдалль' },
+                        { text: 'Асович' },
+                        { avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT_xPHCANgB6hfarHTOppp0NxlsgeaHhT1WU1uPNAFFgCndL2N' }    
+                    ],
+                    user2: [
+                        { text: 'Заточенов' },
+                        { text: 'Фенрир' },
+                        { text: 'Локивич' },
+                        { avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmovXKXExm12d0vQxexN6HwMOAI4yYZuKNYVnIe_5KRFqfoZFE' }    
+                    ],
+                    user3: [
+                        { text: 'Безруков' },
+                        { text: 'Тюр' },
+                        { text: 'Одинович' },
+                        { avatar: 'http://vved-v-germ-phil.cvsw.ru/asatru/tyr.jpg' }    
+                    ],
+                    user4: [
+                        { text: 'Первородов' },
+                        { text: 'И́мир' },
+                        { text: 'Мирович' },
+                        { avatar: 'http://s017.radikal.ru/i429/1211/7d/fdd01b214a2a.jpg' }    
+                    ],
+                    user5: [
+                        { text: 'Вальхалов' },
+                        { text: 'Один' },
+                        { text: 'Имирович' },
+                        { avatar: 'http://godsbay.ru/vikings/images/viking132.jpg' }    
+                    ]
+                }   
+            },
+             methods: {
+                 hiddenTable: function (event) {
+                     this.seen = !this.seen;
+                 },
+                 allUsers: function(event){
+                     var size = 0;
+                     var that = this.aUs;
+                     for (key in this.aUs) {
+                        if (this.aUs.hasOwnProperty(key)) size++;
+                     }
+                     return size;
+                 }
+             }
+        })
+    </script>
+</body>
+</html>
