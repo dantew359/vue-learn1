@@ -70,38 +70,7 @@
     <div id="app">
         <div class="user-table" v-if="seen">
             <h2>Всего пользователей: {{ allUsers() }} </h2>
-<!--            <h2>Всего пользователей: {{ aUs.user1 }} </h2>-->
-           
-<!--            <ul class="user-block">
-                <li><img v-for="ava in aUs.user1"  v-bind:src="ava.avatar"></li>
-                <li v-for="user in aUs.user1">
-                   {{ user.text }}
-                </li>
-            </ul>
-            <ul class="user-block">
-                <li><img v-for="ava in aUs.user2"  v-bind:src="ava.avatar"></li>
-                <li v-for="user in aUs.user2">
-                   {{ user.text }}
-                </li>
-            </ul>
-            <ul class="user-block">
-                <li><img v-for="ava in aUs.user3"  v-bind:src="ava.avatar"></li>
-                <li v-for="user in aUs.user3">
-                   {{ user.text }}
-                </li>
-            </ul>
-            <ul class="user-block">
-                <li><img v-for="ava in aUs.user4"  v-bind:src="ava.avatar"></li>
-                <li v-for="user in aUs.user4">
-                   {{ user.text }}
-                </li>
-            </ul>
-            <ul class="user-block">
-                <li><img v-for="ava in aUs.user5"  v-bind:src="ava.avatar"></li>
-                <li v-for="user in aUs.user5">
-                   {{ user.text }}
-                </li>
-            </ul>-->
+
             
                 <ul class="user-block" v-for="(item, index) in aUs">
                     <li><img v-if="item[3].avatar" v-bind:src="item[3].avatar"></li>
