@@ -105,13 +105,10 @@
             
                 <ul class="user-block" v-for="(item, index) in aUs">
                     <li><img v-if="item[3].avatar" v-bind:src="item[3].avatar"></li>
-<!--                    <li><img v-else v-bind:src="item[0].text"></li>-->
                     <li> {{item[0].text}} </li>
                     <li> {{item[1].text}} </li>
                     <li> {{item[2].text}} </li>
                 </ul>
-            
-            
         </div>
         <div class="footer">
             <button v-on:click="hiddenTable">Скрыть список</button>
@@ -120,7 +117,6 @@
 
     </div>
     <script>
-        
         var app = new Vue({
             el: '#app',
             data: {
